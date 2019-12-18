@@ -1,0 +1,154 @@
+{
+    "title": "Verification Microservice",
+    "description": "Verification Micro-Service with a REST endpoint that accesses Log Service",
+    "docsUrl": "",
+    "url": "https://verify.demo.ubirch.com/api/",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://verify.demo.ubirch.com/api/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "health": {
+            "main": "./lib/actions/health.js",
+            "title": "health",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/health.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "getUPP": {
+            "main": "./lib/actions/getUPP.js",
+            "title": "getUPP",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/octet-stream": "application/octet-stream",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/getUPP.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "verifyUPP": {
+            "main": "./lib/actions/verifyUPP.js",
+            "title": "verifyUPP",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/octet-stream": "application/octet-stream",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/verifyUPP.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "verifyUPPWithUpperBound": {
+            "main": "./lib/actions/verifyUPPWithUpperBound.js",
+            "title": "verifyUPPWithUpperBound",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/octet-stream": "application/octet-stream",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/verifyUPPWithUpperBound.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "verifyUPPWithUpperAndLowerBound": {
+            "main": "./lib/actions/verifyUPPWithUpperAndLowerBound.js",
+            "title": "verifyUPPWithUpperAndLowerBound",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                },
+                "body_content_type": {
+                    "viewClass": "SelectView",
+                    "label": "Body Content-Type",
+                    "required": true,
+                    "prompt": "Choose a body Content-Type.",
+                    "model": {
+                        "application/octet-stream": "application/octet-stream",
+                        "text/plain": "text/plain"
+                    }
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/verifyUPPWithUpperAndLowerBound.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

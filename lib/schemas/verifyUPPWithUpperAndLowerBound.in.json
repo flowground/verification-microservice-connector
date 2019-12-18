@@ -1,0 +1,15 @@
+{
+    "type": "object",
+    "properties": {
+        "response_form": {
+            "type": "string"
+        },
+        "blockchain_info": {
+            "type": "string"
+        },
+        "requestBody": {
+            "type": "string",
+            "format": "binary"
+        }
+    }
+}

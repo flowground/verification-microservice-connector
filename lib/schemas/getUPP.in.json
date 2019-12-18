@@ -1,0 +1,12 @@
+{
+    "type": "object",
+    "properties": {
+        "disableRedisLookup": {
+            "type": "boolean"
+        },
+        "requestBody": {
+            "type": "string",
+            "format": "binary"
+        }
+    }
+}
